@@ -1,0 +1,11 @@
+numpy
+pandas
+streamlit
+langchain-community 
+pypdf
+langchain-huggingface
+ipywidgets
+faiss-cpu
+langchain_groq
+sentence-transformers
+streamlit-local-storage
