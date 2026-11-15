@@ -1,11 +1,13 @@
 numpy
 pandas
 streamlit
-langchain-community 
+langchain<0.4
+langchain-community<0.4
+langchain-core<0.4
 pypdf
 langchain-huggingface
 ipywidgets
 faiss-cpu
-langchain_groq
+langchain-anthropic<1.0
 sentence-transformers
 streamlit-local-storage

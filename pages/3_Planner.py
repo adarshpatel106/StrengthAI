@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import os
-from langchain_groq import ChatGroq
+from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
 from streamlit_local_storage import LocalStorage
@@ -11,12 +11,12 @@ from datetime import datetime
 # Load env vars
 dotenv_path = os.path.join(os.getcwd(), ".env")
 load_dotenv(dotenv_path)
-groq_api_key = os.getenv("GROQ_API_KEY")
 
 # LLM Setup
-llm = ChatGroq(
-    groq_api_key=groq_api_key,
-    model="llama-3.1-8b-instant"
+llm = ChatAnthropic(
+    anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
+    model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6"),
+    max_tokens=2048,
 )
 
 st.title("📅 Personalized Training Planner")

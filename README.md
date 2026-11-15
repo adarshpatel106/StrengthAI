@@ -28,10 +28,12 @@ StrengthAI is an AI-powered, Streamlit-based app for personalized strength train
    ```
 
 3. **Set up environment variables:**
-   - Create a `.env` file in the project root.
-   - Add your Groq API key:
+   - Copy `.env.example` to `.env` in the project root.
+   - Replace the placeholder with your Anthropic API key:
      ```
-     GROQ_API_KEY=your_groq_api_key_here
+     ANTHROPIC_API_KEY=your_anthropic_api_key_here
+     # Optional: defaults to claude-sonnet-4-6
+     ANTHROPIC_MODEL=claude-sonnet-4-6
      ```
 
 4. **(Optional) Download or prepare model files:**
@@ -72,7 +74,7 @@ Key packages:
 - streamlit
 - pandas
 - langchain-community
-- langchain_groq
+- langchain-anthropic
 - sentence-transformers
 - faiss-cpu
 - streamlit-local-storage
@@ -83,7 +85,7 @@ Key packages:
 
 ## Notes
 
-- The app uses LLMs via Groq for generating plans and injury advice.
+- The app uses Claude via Anthropic for generating plans and injury advice.
 - All features are accessible via the sidebar or main navigation links.
 - For best results, keep your workout and injury logs up to date.
 

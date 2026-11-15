@@ -4,14 +4,13 @@ import json
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import PromptTemplate
-from langchain_groq import ChatGroq
+from langchain_anthropic import ChatAnthropic
 from langchain.chains import ConversationalRetrievalChain
 from dotenv import load_dotenv
 from streamlit_local_storage import LocalStorage
 
 # Load environment variables
 load_dotenv()
-groq_api_key = os.getenv("GROQ_API_KEY")
 
 # Page title
 st.title("🧠 Injury Assistant (Ask Milo)")
@@ -36,9 +35,10 @@ vectorstore = FAISS.load_local("pages/data/milo_index", embeddings, allow_danger
 retriever = vectorstore.as_retriever(search_type="similarity", k=5)
 
 # Set up LLM
-llm = ChatGroq(
-    groq_api_key=groq_api_key,
-    model="llama-3.1-8b-instant"
+llm = ChatAnthropic(
+    anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
+    model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6"),
+    max_tokens=2048,
 )
 
 # Step 1: Describe symptoms and get diagnostic tests
